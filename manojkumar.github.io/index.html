@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aura Soft | Custom Software & App Development Company</title>
+    <meta name="description" content="Aura Soft provides premium web development services, mobile app development, and UI UX design services. We build scalable custom software for startups." />
+    <meta name="keywords" content="app development company, web development services, UI UX design services, custom software development" />
+    <script>
+      // Prevent "Cannot set property fetch of #<Window> which has only a getter" error
+      // caused by some polyfills in sandboxed iframe environments.
+      try {
+        const globals = ['fetch', 'Response', 'Request', 'Headers'];
+        globals.forEach(g => {
+          if (window[g]) {
+            const original = window[g];
+            try {
+              Object.defineProperty(window, g, {
+                get: () => original,
+                set: (val) => {
+                  console.warn(`Ignored attempt to overwrite window.${g}`);
+                },
+                configurable: true
+              });
+            } catch (err) {
+              console.warn(`Could not redefine ${g}`, err);
+            }
+          }
+        });
+      } catch (e) {
+        console.warn('Could not make fetch globals writable', e);
+      }
+    </script>
+  </head>
+  <body class="bg-white text-[#0A0A0A] dark:bg-[#0B0F0C] dark:text-[#E6FEEA] transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
